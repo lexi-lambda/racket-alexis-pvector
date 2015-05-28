@@ -47,8 +47,7 @@ interface for interacting with them.
 Afterwards, they can be interacted with via the functions from @racketmodname[alexis/collection].
 
 @(pvector-interaction
-  (sequence->list
-   (conj (pvector 1 2 3 4) 5)))
+  (conj (pvector 1 2 3 4) 5))
 
 It is often useful to create an empty vector using @racket[(pvector)], then extending it with some
 other sequence.
