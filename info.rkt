@@ -7,6 +7,7 @@
 
 (define deps
   '("base"
+    "rackunit-lib"
     "alexis-collections"))
 (define build-deps
   '("cover"))

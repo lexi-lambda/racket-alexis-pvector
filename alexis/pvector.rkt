@@ -16,6 +16,14 @@
 
 (struct pvector-head (size root tail)
   #:transparent
+  #:methods gen:equal+hash
+  [(define (equal-proc a b equal?)
+     (and (= (length a) (length b))
+          (andmap equal? a b)))
+   (define (hash-proc a hash-code)
+     (foldl (λ (acc v) (bitwise-xor acc (hash-code v))) 0 a))
+   (define (hash2-proc a hash-code)
+     (foldl (λ (acc v) (bitwise-xor acc (hash-code v))) 0 a))]
   #:methods gen:countable
   [(define (length pv) (pvector-length pv))
    (define (known-finite? pv) #t)]
