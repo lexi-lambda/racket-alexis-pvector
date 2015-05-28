@@ -4,7 +4,6 @@
   racket/match
   racket/vector
   alexis/collection
-  alexis/collection/random-access
   racket/generic
   racket/contract)
 
@@ -26,8 +25,8 @@
   [(define/generic -rest rest)
    (define/generic -reverse reverse)
    (define (nth pv i) (pvector-get pv i))
-   (define (rest pv) (-rest (wrap-random-access-sequence pv)))
-   (define (reverse pv) (-reverse (wrap-random-access-sequence pv)))])
+   (define (set-nth pv i v) (pvector-set pv i v))
+   (define (random-access? pv) #t)])
 (struct pvector-tail (size children) #:transparent)
 (struct pvector-node (height children) #:transparent)
 
