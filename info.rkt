@@ -10,4 +10,6 @@
     "rackunit-lib"
     "alexis-collections"))
 (define build-deps
-  '("cover"))
+  '("cover"
+    "scribble-lib"
+    "racket-doc"))

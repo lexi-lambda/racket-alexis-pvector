@@ -15,7 +15,7 @@
 (define branching-factor (expt 2 bits-per-node))
 
 (struct pvector-head (size root tail)
-  #:transparent
+  #:reflection-name 'pvector
   #:methods gen:equal+hash
   [(define (equal-proc a b equal?)
      (and (= (length a) (length b))
