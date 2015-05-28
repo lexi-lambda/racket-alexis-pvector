@@ -5,7 +5,9 @@
   racket/vector
   alexis/collection
   racket/generic
-  racket/contract)
+  racket/contract
+  racket/string
+  racket/format)
 
 (provide pvector pvector?)
 
@@ -34,7 +36,10 @@
    (define/generic -reverse reverse)
    (define (nth pv i) (pvector-get pv i))
    (define (set-nth pv i v) (pvector-set pv i v))
-   (define (random-access? pv) #t)])
+   (define (random-access? pv) #t)]
+  #:methods gen:custom-write
+  [(define (write-proc pv out mode)
+     (fprintf out "#pv[~a]" (string-join (sequence->list (map ~a pv)))))])
 (struct pvector-tail (size children) #:transparent)
 (struct pvector-node (height children) #:transparent)
 
