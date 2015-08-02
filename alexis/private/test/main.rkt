@@ -15,3 +15,17 @@
 (test-case
  "Vector equality"
  (check-equal? (pvector 1 2 3 4) (conj* (pvector) 1 2 3 4)))
+
+(test-case
+ "Comprehensions"
+ (check-equal?
+  (for/pvector ([i (in-range 5)])
+    (* i i))
+  (pvector 0 1 4 9 16))
+ (check-equal?
+  (for*/pvector ([i (in-range 1 4)]
+                 [j (in-range 1 4)])
+    (* i j))
+  (pvector 1 2 3
+           2 4 6
+           3 6 9)))

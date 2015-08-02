@@ -68,3 +68,10 @@ Returns @racket[#t] if @racket[v] is a @tech{persistent vector}, otherwise retur
 Creates a new @tech{persistent vector} with the @racket[v] arguments as its contents. Calling this
 function with multiple arguments simply performs @racket[extend] on the empty vector,
 @racket[(pvector)], so it is no more efficient than using @racket[extend] directly.}
+
+@section{Comprehensions}
+
+@deftogether[(@defform[(for/pvector (for-clause ...) body-or-break ... body)]
+              @defform[(for*/pvector (for-clause ...) body-or-break ... body)])]{
+Equivalent to @racket[for/sequence] or @racket[for*/sequence] combined with
+@racket[(extend (pvector) ...)] to collect the results into a persistent vector.}
