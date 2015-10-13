@@ -69,6 +69,19 @@ Creates a new @tech{persistent vector} with the @racket[v] arguments as its cont
 function with multiple arguments simply performs @racket[extend] on the empty vector,
 @racket[(pvector)], so it is no more efficient than using @racket[extend] directly.}
 
+@defproc[(build-pvector [n exact-nonnegative-integer?]
+                        [proc (exact-nonnegative-integer? . -> . any/c)])
+         pvector?]{
+Creates a new @tech{persistent vector} of length @racket[n] by applying @racket[proc] to each integer
+from 0 to n-1 in order. The @racket[i]th element of the vector will be the value of @racket[(proc i)].
+}
+
+@defproc[(make-pvector [n exact-nonnegative-integer?] [v any/c])
+         pvector?]{
+Creates a new @tech{persistent vector} of length @racket[n], with each element filled with the value
+@racket[v].
+}
+
 @section{Comprehensions}
 
 @deftogether[(@defform[(for/pvector (for-clause ...) body-or-break ... body)]
