@@ -7,6 +7,7 @@ env:
     - RACKET_DIR=~/racket
   matrix:
     - RACKET_VERSION=6.2
+    - RACKET_VERSION=6.3
     - RACKET_VERSION=HEAD
 
 before_install:
@@ -16,6 +17,7 @@ before_install:
 
 install:
   - raco pkg install --deps search-auto --name alexis-pvector --link $TRAVIS_BUILD_DIR
+  - raco pkg install cover cover-coveralls
 
 before_script:
 
